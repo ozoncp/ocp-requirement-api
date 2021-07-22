@@ -32,30 +32,25 @@ func MakeSliceOfBatches(inSlice []int, batchLen int) ([][]int, error) {
 	return outSlice, nil
 }
 
-func ReverseMap(inMap map[string]int) map[int][]string {
-	outMap := make(map[int][]string)
+func ReverseMap(inMap map[string]int) map[int]string {
+	outMap := make(map[int]string)
 
 	for k, v := range inMap {
-		outMap[v] = append(outMap[v], k)
+		outMap[v] = k
 	}
 
 	return outMap
 }
 
 func FilterByHardcodedValues(inSlice []int) []int {
-	hardcodedValues := map[int]bool{1: true, 2: true, 3: true}
+	hardcodedValues := map[int]struct{}{1: {}, 2: {}, 3: {}}
+	outSlice := make([]int, 0)
 
 	lenInSlice := len(inSlice)
 	if lenInSlice == 0 {
-		return make([]int, 0)
+		return outSlice
 	}
 
-	sliceCapacity := len(inSlice) - len(hardcodedValues)
-	if sliceCapacity < 0 {
-		sliceCapacity = len(inSlice)
-	}
-
-	outSlice := make([]int, 0, sliceCapacity)
 	for _, v := range inSlice {
 		if _, ok := hardcodedValues[v]; !ok {
 			outSlice = append(outSlice, v)

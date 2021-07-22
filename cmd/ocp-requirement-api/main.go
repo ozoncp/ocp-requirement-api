@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/ozoncp/ocp-requirement-api/internals/utils"
+	"github.com/ozoncp/ocp-requirement-api/internal/utils"
 )
 
 func main() {
@@ -21,14 +21,11 @@ func main() {
 	fmt.Println(utils.MakeSliceOfBatches(example1, 3))
 
 	example2 := map[string]int{"test": 1, "test2": 2}
-	// map[1:[test] 2:[test2]]
+	// map[1:test 2:test2]
 	fmt.Println(utils.ReverseMap(example2))
 	example3 := map[string]int{}
 	// map[]
 	fmt.Println(utils.ReverseMap(example3))
-	example4 := map[string]int{"test": 1, "test2": 1}
-	// map[1:[test test2]]
-	fmt.Println(utils.ReverseMap(example4))
 
 	example5 := []int{1, 2, 3, 4}
 	// [4]
