@@ -1,8 +1,11 @@
 package utils
 
 import (
+	"bufio"
 	"errors"
+	"log"
 	"math"
+	"os"
 )
 
 func MakeSliceOfBatches(inSlice []int, batchLen int) ([][]int, error) {
@@ -58,4 +61,32 @@ func FilterByHardcodedValues(inSlice []int) []int {
 	}
 
 	return outSlice
+}
+
+func ReadConfigFile(path string) ([]string, error) {
+	file, err := os.Open(path)
+
+	if err != nil {
+		return nil, err
+	}
+
+	defer func(f *os.File) {
+		err := f.Close()
+		if err != nil {
+			log.Fatal("Failed to close the file.")
+		}
+	}(file)
+
+	scanner := bufio.NewScanner(file)
+
+	result := make([]string, 0)
+	for scanner.Scan() {
+		result = append(result, scanner.Text())
+	}
+
+	if err := scanner.Err(); err != nil {
+		return nil, err
+	}
+
+	return result, nil
 }
