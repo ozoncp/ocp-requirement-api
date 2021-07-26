@@ -18,6 +18,10 @@ func TestMakeSliceOfBatchesSuccess(t *testing.T) {
 	result, err = MakeSliceOfBatches(example, 3)
 	assert.NoError(t, err)
 	assert.Equal(t, [][]int{{1, 2, 3}, {4}}, result)
+
+	result, err = MakeSliceOfBatches(example, 5)
+	assert.NoError(t, err)
+	assert.Equal(t, [][]int{{1, 2, 3, 4}}, result)
 }
 
 func TestMakeSliceOfBatchesError(t *testing.T) {
@@ -25,9 +29,6 @@ func TestMakeSliceOfBatchesError(t *testing.T) {
 
 	_, err := MakeSliceOfBatches(example, -1)
 	assert.EqualError(t, err, "batch len can't be less than 1")
-
-	_, err = MakeSliceOfBatches(example, 5)
-	assert.EqualError(t, err, "len of the slice can't be less than batch len")
 }
 
 func TestReverseMap(t *testing.T) {
@@ -103,6 +104,21 @@ func TestSplitToBulksSuccess(t *testing.T) {
 		},
 		result,
 	)
+
+	result, err = SplitRequirementsToBulks(example, 5)
+	assert.NoError(t, err)
+	assert.Equal(
+		t,
+		[][]models.Requirement{
+			{
+				{1, 1, ""},
+				{2, 2, ""},
+				{3, 3, ""},
+				{4, 4, ""},
+			},
+		},
+		result,
+	)
 }
 
 func TestSplitToBulksError(t *testing.T) {
@@ -115,9 +131,6 @@ func TestSplitToBulksError(t *testing.T) {
 
 	_, err := SplitRequirementsToBulks(example, -1)
 	assert.EqualError(t, err, "batch len can't be less than 1")
-
-	_, err = SplitRequirementsToBulks(example, 5)
-	assert.EqualError(t, err, "len of the slice can't be less than batch len")
 }
 
 func TestConvertRequirementsSliceToMap(t *testing.T) {

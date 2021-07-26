@@ -12,10 +12,6 @@ func SplitRequirementsToBulks(inSlice []models.Requirement, batchLen int) ([][]m
 		return nil, errors.New("batch len can't be less than 1")
 	}
 
-	if inSliceLen < batchLen {
-		return nil, errors.New("len of the slice can't be less than batch len")
-	}
-
 	regularBatchesNumber := inSliceLen / batchLen
 
 	batchNumber := int(math.Ceil(float64(inSliceLen) / float64(batchLen)))
