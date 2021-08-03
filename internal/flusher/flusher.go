@@ -34,11 +34,11 @@ func (f flusher) Flush(requirements []models.Requirement) []models.Requirement {
 	}
 
 	for _, requirements := range requirementsBulks {
-		if err := f.repository.AddEntities(requirements); err == nil {
-			flushedRequirements = append(flushedRequirements, requirements...)
-		} else {
+		if err := f.repository.AddEntities(requirements); err != nil {
 			log.Print(err)
+			continue
 		}
+		flushedRequirements = append(flushedRequirements, requirements...)
 	}
 
 	return flushedRequirements
