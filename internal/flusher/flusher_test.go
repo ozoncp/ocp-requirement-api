@@ -45,7 +45,7 @@ var _ = Describe("Flusher", func() {
 
 				result := myFlusher.Flush(requirements)
 
-				gomega.Expect(result).Should(gomega.Equal([]models.Requirement{}))
+				gomega.Expect(result).Should(gomega.Equal(requirements))
 
 			})
 		})
@@ -63,7 +63,7 @@ var _ = Describe("Flusher", func() {
 				}
 			})
 
-			It("should add and return whole slice", func() {
+			It("should add and return empty slice", func() {
 
 				for _, args := range expectedArgs {
 					repository.EXPECT().AddEntities(args)
@@ -71,7 +71,7 @@ var _ = Describe("Flusher", func() {
 
 				result := myFlusher.Flush(requirements)
 
-				gomega.Expect(result).Should(gomega.Equal(requirements))
+				gomega.Expect(result).Should(gomega.Equal([]models.Requirement{}))
 
 			})
 
@@ -95,7 +95,7 @@ var _ = Describe("Flusher", func() {
 
 				result := myFlusher.Flush(requirements)
 
-				gomega.Expect(result).Should(gomega.Equal(requirements))
+				gomega.Expect(result).Should(gomega.Equal([]models.Requirement{}))
 
 			})
 
@@ -120,7 +120,7 @@ var _ = Describe("Flusher", func() {
 
 			result := myFlusher.Flush(requirements)
 
-			gomega.Expect(result).Should(gomega.Equal(expectedArgs[0]))
+			gomega.Expect(result).Should(gomega.Equal(requirements[2:]))
 
 		})
 
@@ -133,12 +133,12 @@ var _ = Describe("Flusher", func() {
 			expectedArgs = [][]models.Requirement{{}}
 		})
 
-		It("shouldn't add anything and should return empty slice", func() {
+		It("shouldn't add anything and should return whole slice", func() {
 			repository.EXPECT().AddEntities(gomock.Any()).Return(errors.New("error")).Times(2)
 
 			result := myFlusher.Flush(requirements)
 
-			gomega.Expect(result).Should(gomega.Equal(expectedArgs[0]))
+			gomega.Expect(result).Should(gomega.Equal(result))
 
 		})
 

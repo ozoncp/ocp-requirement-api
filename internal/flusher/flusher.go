@@ -26,20 +26,19 @@ func NewFlusher(chunkSize int, repository repository.Repo) Flusher {
 func (f flusher) Flush(requirements []models.Requirement) []models.Requirement {
 	requirementsBulks, err := utils.SplitRequirementsToBulks(requirements, f.chunkSize)
 
-	flushedRequirements := make([]models.Requirement, 0)
-
 	if err != nil {
 		log.Print(err)
-		return flushedRequirements
+		return requirements
 	}
+
+	notFlushedRequirements := make([]models.Requirement, 0)
 
 	for _, requirements := range requirementsBulks {
 		if err := f.repository.AddEntities(requirements); err != nil {
 			log.Print(err)
-			continue
+			notFlushedRequirements = append(notFlushedRequirements, requirements...)
 		}
-		flushedRequirements = append(flushedRequirements, requirements...)
 	}
 
-	return flushedRequirements
+	return notFlushedRequirements
 }

@@ -2,7 +2,7 @@ package utils
 
 import (
 	"github.com/ozoncp/ocp-requirement-api/internal/models"
-	test_utils "github.com/ozoncp/ocp-requirement-api/internal/test-utils"
+	"github.com/ozoncp/ocp-requirement-api/internal/test-utils"
 	"github.com/stretchr/testify/assert"
 	"testing"
 )
