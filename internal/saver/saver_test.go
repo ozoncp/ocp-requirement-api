@@ -39,19 +39,28 @@ var _ = Describe("Saver", func() {
 
 		It("flush is triggered by 'ticker' and 'close' from 2 to 3 times within 2 seconds", func() {
 			flusher.EXPECT().Flush([]models.Requirement{}).MinTimes(2).MaxTimes(3).Return([]models.Requirement{})
-			mySaver.Init()
+			err := mySaver.Init()
+			gomega.Expect(err).ShouldNot(gomega.HaveOccurred())
+
 			time.Sleep(2 * time.Second)
-			mySaver.Close()
+
+			err = mySaver.Close()
+			gomega.Expect(err).ShouldNot(gomega.HaveOccurred())
 		})
 
 		It("same as before, but one of calls flushes saved requirement", func() {
 			flusher.EXPECT().Flush([]models.Requirement{}).MinTimes(1).MaxTimes(2).Return([]models.Requirement{})
 			flusher.EXPECT().Flush(requirements[:1]).Return([]models.Requirement{}).Times(1)
 
-			mySaver.Init()
-			mySaver.Save(requirements[0])
+			err := mySaver.Init()
+			gomega.Expect(err).ShouldNot(gomega.HaveOccurred())
+
+			err = mySaver.Save(requirements[0])
+			gomega.Expect(err).ShouldNot(gomega.HaveOccurred())
+
 			time.Sleep(2 * time.Second)
-			mySaver.Close()
+			err = mySaver.Close()
+			gomega.Expect(err).ShouldNot(gomega.HaveOccurred())
 		})
 
 		It("flusher fails to save batch for the first time, but succeed at the second time", func() {
@@ -59,24 +68,70 @@ var _ = Describe("Saver", func() {
 			flusher.EXPECT().Flush(requirements[:1]).Return(requirements[:1]).Times(1)
 			flusher.EXPECT().Flush(requirements[:1]).Return([]models.Requirement{}).Times(1)
 
-			mySaver.Init()
-			mySaver.Save(requirements[0])
+			err := mySaver.Init()
+			gomega.Expect(err).ShouldNot(gomega.HaveOccurred())
+
+			err = mySaver.Save(requirements[0])
+			gomega.Expect(err).ShouldNot(gomega.HaveOccurred())
 			time.Sleep(2 * time.Second)
-			mySaver.Close()
+
+			err = mySaver.Close()
+			gomega.Expect(err).ShouldNot(gomega.HaveOccurred())
 		})
 
 		It("still works with calling Init after Close", func() {
 			flusher.EXPECT().Flush([]models.Requirement{}).MinTimes(2).MaxTimes(3).Return([]models.Requirement{})
 
-			mySaver.Init()
+			err := mySaver.Init()
+			gomega.Expect(err).ShouldNot(gomega.HaveOccurred())
+
 			time.Sleep(2 * time.Second)
-			mySaver.Close()
+
+			err = mySaver.Close()
+			gomega.Expect(err).ShouldNot(gomega.HaveOccurred())
 
 			flusher.EXPECT().Flush([]models.Requirement{}).MinTimes(2).MaxTimes(3).Return([]models.Requirement{})
 
-			mySaver.Init()
+			err = mySaver.Init()
+			gomega.Expect(err).ShouldNot(gomega.HaveOccurred())
+
 			time.Sleep(2 * time.Second)
-			mySaver.Close()
+
+			err = mySaver.Close()
+			gomega.Expect(err).ShouldNot(gomega.HaveOccurred())
+		})
+
+		It("fails if call second Init without Close", func() {
+			flusher.EXPECT().Flush(gomock.Any()).AnyTimes().Return([]models.Requirement{})
+
+			err := mySaver.Init()
+			gomega.Expect(err).ShouldNot(gomega.HaveOccurred())
+
+			err = mySaver.Init()
+			gomega.Expect(err).Should(gomega.HaveOccurred())
+
+		})
+
+		It("fails if call second Close without Init", func() {
+			flusher.EXPECT().Flush(gomock.Any()).AnyTimes().Return([]models.Requirement{})
+
+			err := mySaver.Init()
+			gomega.Expect(err).ShouldNot(gomega.HaveOccurred())
+
+			err = mySaver.Close()
+			gomega.Expect(err).ShouldNot(gomega.HaveOccurred())
+
+			err = mySaver.Close()
+			gomega.Expect(err).Should(gomega.HaveOccurred())
+
+		})
+
+		It("fails if call Save without Init", func() {
+			flusher.EXPECT().Flush(gomock.Any()).AnyTimes().Return([]models.Requirement{})
+
+			err := mySaver.Save(requirements[0])
+			gomega.Expect(err).Should(gomega.HaveOccurred())
+
 		})
 	})
 
@@ -101,25 +156,30 @@ var _ = Describe("Saver", func() {
 					return make([]models.Requirement, 0)
 				}).AnyTimes()
 
-			mySaver.Init()
+			err := mySaver.Init()
+			gomega.Expect(err).ShouldNot(gomega.HaveOccurred())
+
 			wg := sync.WaitGroup{}
 			wg.Add(2)
 			go func() {
 				for i := 0; i < 3; i++ {
-					mySaver.Save(requirements[0])
+					err = mySaver.Save(requirements[0])
+					gomega.Expect(err).ShouldNot(gomega.HaveOccurred())
 				}
 				defer wg.Done()
 			}()
 			go func() {
 				for i := 0; i < 3; i++ {
-					mySaver.Save(requirements[1])
+					err = mySaver.Save(requirements[1])
+					gomega.Expect(err).ShouldNot(gomega.HaveOccurred())
 				}
 				defer wg.Done()
 			}()
 			wg.Wait()
 			time.Sleep(2 * time.Second)
 
-			mySaver.Close()
+			err = mySaver.Close()
+			gomega.Expect(err).ShouldNot(gomega.HaveOccurred())
 
 			sort.Slice(totalSaved, func(i int, j int) bool {
 				return totalSaved[i].Id < totalSaved[j].Id
