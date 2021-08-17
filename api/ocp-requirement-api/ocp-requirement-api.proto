@@ -1,0 +1,78 @@
+syntax = "proto3";
+
+import "google/api/annotations.proto";
+import "github.com/envoyproxy/protoc-gen-validate/validate/validate.proto";
+
+package ocp.requirement.api;
+
+option go_package = "github.com/ozoncp/ocp-requirement-api/pkg/ocp-requirement-api;ocp_requirement_api";
+
+
+service OcpRequirementApi {
+
+    rpc ListRequirementsV1(ListRequirementsV1Request) returns (ListRequirementsV1Response) {
+        option (google.api.http) = {
+            get: "/v1/requirements"
+        };
+    }
+
+    rpc DescribeRequirementV1(DescribeRequirementV1Request) returns (DescribeRequirementV1Response) {
+        option (google.api.http) = {
+            get: "/v1/requirements/{requirement_id}"
+        };
+    }
+
+    rpc CreateRequirementV1(CreateRequirementV1Request) returns (CreateRequirementV1Response) {
+        option (google.api.http) = {
+            post: "/v1/requirements"
+            body: "*"
+        };
+    }
+
+    rpc RemoveRequirementV1(RemoveRequirementV1Request) returns (RemoveRequirementV1Response) {
+        option (google.api.http) = {
+            delete: "/v1/requirements/{requirement_id}"
+        };
+    }
+}
+
+message ListRequirementsV1Request {
+    uint64 limit = 1;
+    uint64 offset = 2;
+}
+
+message ListRequirementsV1Response {
+    repeated Requirement requirements = 1;
+}
+
+message CreateRequirementV1Request {
+    uint64 user_id = 1;
+    string text = 2;
+}
+
+message CreateRequirementV1Response {
+    uint64 requirement_id = 1;
+}
+
+message RemoveRequirementV1Request {
+    uint64 requirement_id = 1 [(validate.rules).uint64.gt = 0];
+}
+
+message RemoveRequirementV1Response {
+    bool found = 1;
+}
+
+message DescribeRequirementV1Request {
+    uint64 requirement_id = 1 [(validate.rules).uint64.gt = 0];
+}
+
+message DescribeRequirementV1Response {
+    Requirement requirement = 1;
+}
+
+
+message Requirement {
+    uint64 id = 1;
+    uint64 user_id = 2;
+    string text = 3;
+}
