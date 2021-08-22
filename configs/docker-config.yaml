@@ -1,0 +1,8 @@
+grpc:
+  address: ":82"
+
+rest:
+  address: ":9999"
+
+db:
+  dsn: "postgres://user:password@postgres:5432/requirement_db?sslmode=disable"

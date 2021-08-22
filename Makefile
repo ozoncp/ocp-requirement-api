@@ -64,3 +64,10 @@ install-go-deps: .install-go-deps
 		go install github.com/grpc-ecosystem/grpc-gateway/protoc-gen-swagger
 		go install google.golang.org/grpc/cmd/protoc-gen-go-grpc
 		go install github.com/envoyproxy/protoc-gen-validate
+
+.PHONY: migrate
+migrate: .migrate
+
+.PHONY: .migrate
+.migrate:
+	 goose -s -dir ./migrations postgres "postgres://user:password@127.0.0.1:5444/requirement_db?sslmode=disable" up
