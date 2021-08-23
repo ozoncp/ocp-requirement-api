@@ -1,5 +1,5 @@
 .PHONY: build
-build: vendor-proto .generate .build
+build: vendor-proto .generate .build .generate_mocks
 
 .PHONY: .generate
 .generate:
@@ -71,3 +71,12 @@ migrate: .migrate
 .PHONY: .migrate
 .migrate:
 	 goose -s -dir ./migrations postgres "postgres://user:password@127.0.0.1:5444/requirement_db?sslmode=disable" up
+
+.PHONY: generate_mocks
+generate_mocks: .generate_mocks
+
+.PHONY: .generate_mocks
+.generate_mocks:
+	mockgen  -destination ./internal/mocks/repository.go -package mocks github.com/ozoncp/ocp-requirement-api/internal/repository Repo
+	mockgen  -destination ./internal/mocks/flusher.go -package mocks github.com/ozoncp/ocp-requirement-api/internal/flusher Flusher
+
