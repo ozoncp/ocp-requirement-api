@@ -80,3 +80,10 @@ generate_mocks: .generate_mocks
 	mockgen  -destination ./internal/mocks/repository.go -package mocks github.com/ozoncp/ocp-requirement-api/internal/repository Repo
 	mockgen  -destination ./internal/mocks/flusher.go -package mocks github.com/ozoncp/ocp-requirement-api/internal/flusher Flusher
 
+.PHONY: tests
+tests: .tests
+
+.PHONY: .tests
+.tests:
+	go test ./... -v
+
