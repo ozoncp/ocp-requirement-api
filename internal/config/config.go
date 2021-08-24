@@ -1,7 +1,7 @@
 package config
 
 import (
-	"gopkg.in/yaml.v3"
+	"gopkg.in/yaml.v2"
 	"log"
 	"os"
 )
@@ -20,10 +20,27 @@ type rest struct {
 	Address string `yaml:"address"`
 }
 
+type jaeger struct {
+	Address string `yaml:"address"`
+}
+
+type prometheus struct {
+	Address  string `yaml:"address"`
+	Endpoint string `yaml:"endpoint"`
+}
+
+type kafka struct {
+	Addresses []string `yaml:"addresses"`
+	Topic     string   `yaml:"topic"`
+}
 type Config struct {
-	Grpc     grpc `yaml:"grpc"`
-	Rest     rest `yaml:"rest"`
-	Database db   `yaml:"db"`
+	ServiceName string     `yaml:"service-name"`
+	Grpc        grpc       `yaml:"grpc"`
+	Rest        rest       `yaml:"rest"`
+	Database    db         `yaml:"db"`
+	Jaeger      jaeger     `yaml:"jaeger"`
+	Prometheus  prometheus `yaml:"prometheus"`
+	Kafka       kafka      `yaml:"kafka"`
 }
 
 func ReadConfigYAML(path string) (Config, error) {

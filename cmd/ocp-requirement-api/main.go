@@ -6,8 +6,13 @@ import (
 	"github.com/jmoiron/sqlx"
 	"github.com/ozoncp/ocp-requirement-api/internal/api"
 	"github.com/ozoncp/ocp-requirement-api/internal/config"
+	"github.com/ozoncp/ocp-requirement-api/internal/flusher"
+	"github.com/ozoncp/ocp-requirement-api/internal/kafka"
+	"github.com/ozoncp/ocp-requirement-api/internal/metrics"
 	repo "github.com/ozoncp/ocp-requirement-api/internal/repository"
+	"github.com/ozoncp/ocp-requirement-api/internal/tracing"
 	requirementApiV1Description "github.com/ozoncp/ocp-requirement-api/pkg/ocp-requirement-api"
+	"github.com/prometheus/client_golang/prometheus/promhttp"
 	"golang.org/x/net/context"
 	"google.golang.org/grpc"
 	"log"
@@ -15,6 +20,8 @@ import (
 	"net/http"
 	"os"
 )
+
+const batchSize = 10
 
 func initRepo(cfg config.Config) repo.RequirementsRepo {
 
@@ -48,6 +55,21 @@ func runREST(cfg config.Config) {
 	}
 }
 
+func runMonitoring(cfg config.Config) {
+	mux := http.NewServeMux()
+	mux.Handle(cfg.Prometheus.Endpoint, promhttp.Handler())
+
+	srv := &http.Server{
+		Addr:    cfg.Prometheus.Address,
+		Handler: mux,
+	}
+
+	log.Printf("Starting serve metrics on http %s", cfg.Prometheus.Address)
+	if err := srv.ListenAndServe(); err != nil {
+		log.Fatal(err)
+	}
+}
+
 func main() {
 	cfg, err := config.ReadConfigYAML(os.Getenv("CONFIG_PATH"))
 	if err != nil {
@@ -60,11 +82,29 @@ func main() {
 
 	server := grpc.NewServer()
 	repository := initRepo(cfg)
-	requirementApiV1Description.RegisterOcpRequirementApiServer(server, api.NewRequirementApiV1(repository))
+	producer, err := kafka.NewProducer(cfg)
+	if err != nil {
+		log.Fatal(err)
+	}
+	requirementApiV1Description.RegisterOcpRequirementApiServer(
+		server, api.NewRequirementApiV1(
+			repository,
+			flusher.NewFlusher(batchSize, repository),
+			producer,
+		),
+	)
+	closer := tracing.InitTracer(cfg)
+
+	metrics.InitMetrics()
 	go runREST(cfg)
+	go runMonitoring(cfg)
 
 	log.Printf("Starting serve grpc on %s", cfg.Grpc.Address)
 	if err := server.Serve(listen); err != nil {
+		log.Fatal(err)
+	}
+
+	if err := closer.Close(); err != nil {
 		log.Fatal(err)
 	}
 }

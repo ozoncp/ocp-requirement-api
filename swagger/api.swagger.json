@@ -77,6 +77,68 @@
         "tags": [
           "OcpRequirementApi"
         ]
+      },
+      "put": {
+        "operationId": "OcpRequirementApi_UpdateRequirementV1",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/apiUpdateRequirementV1Response"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/apiUpdateRequirementV1Request"
+            }
+          }
+        ],
+        "tags": [
+          "OcpRequirementApi"
+        ]
+      }
+    },
+    "/v1/requirements/multi": {
+      "post": {
+        "operationId": "OcpRequirementApi_MultiCreateRequirementV1",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/apiMultiCreateRequirementV1Response"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/apiMultiCreateRequirementV1Request"
+            }
+          }
+        ],
+        "tags": [
+          "OcpRequirementApi"
+        ]
       }
     },
     "/v1/requirements/{requirement_id}": {
@@ -181,6 +243,28 @@
         }
       }
     },
+    "apiMultiCreateRequirementV1Request": {
+      "type": "object",
+      "properties": {
+        "requirements": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/apiRequirement"
+          }
+        }
+      }
+    },
+    "apiMultiCreateRequirementV1Response": {
+      "type": "object",
+      "properties": {
+        "requirements": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/apiRequirement"
+          }
+        }
+      }
+    },
     "apiRemoveRequirementV1Response": {
       "type": "object",
       "properties": {
@@ -202,6 +286,22 @@
         },
         "text": {
           "type": "string"
+        }
+      }
+    },
+    "apiUpdateRequirementV1Request": {
+      "type": "object",
+      "properties": {
+        "requirements": {
+          "$ref": "#/definitions/apiRequirement"
+        }
+      }
+    },
+    "apiUpdateRequirementV1Response": {
+      "type": "object",
+      "properties": {
+        "updated": {
+          "type": "boolean"
         }
       }
     },

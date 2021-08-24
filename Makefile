@@ -61,19 +61,23 @@ install-go-deps: .install-go-deps
 		go get -u github.com/grpc-ecosystem/grpc-gateway/protoc-gen-grpc-gateway
 		go get -u github.com/golang/protobuf/proto
 		go get -u github.com/golang/protobuf/protoc-gen-go
+		go get -u github.com/golang/mock/mockgen
 		go install github.com/grpc-ecosystem/grpc-gateway/protoc-gen-swagger
 		go install google.golang.org/grpc/cmd/protoc-gen-go-grpc
 		go install github.com/envoyproxy/protoc-gen-validate
+		go install github.com/golang/mock/mockgen
 
 .PHONY: migrate
-migrate: .migrate
+migrate: .install-go-deps .migrate
 
 .PHONY: .migrate
 .migrate:
+	 go get -U github.com/pressly/goose/v3/cmd/goose
+	 go install github.com/pressly/goose/v3/cmd/goose
 	 goose -s -dir ./migrations postgres "postgres://user:password@127.0.0.1:5444/requirement_db?sslmode=disable" up
 
 .PHONY: generate_mocks
-generate_mocks: .generate_mocks
+generate_mocks: .install-go-deps .generate_mocks
 
 .PHONY: .generate_mocks
 .generate_mocks:
@@ -87,3 +91,18 @@ tests: .tests
 .tests:
 	go test ./... -v
 
+.PHONY: up
+up: .up
+
+.PHONY: .up
+.up:
+	docker-compose -f docker-compose.only-env.yaml -f docker-compose.app.yaml down
+	docker-compose -f docker-compose.only-env.yaml -f docker-compose.app.yaml up --build
+
+.PHONY: up-env
+up-env: .up-env
+
+.PHONY: .up-env
+.up-env:
+	docker-compose -f docker-compose.only-env.yaml down
+	docker-compose -f docker-compose.only-env.yaml up

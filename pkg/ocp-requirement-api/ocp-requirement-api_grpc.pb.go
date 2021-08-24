@@ -21,6 +21,8 @@ type OcpRequirementApiClient interface {
 	ListRequirementsV1(ctx context.Context, in *ListRequirementsV1Request, opts ...grpc.CallOption) (*ListRequirementsV1Response, error)
 	DescribeRequirementV1(ctx context.Context, in *DescribeRequirementV1Request, opts ...grpc.CallOption) (*DescribeRequirementV1Response, error)
 	CreateRequirementV1(ctx context.Context, in *CreateRequirementV1Request, opts ...grpc.CallOption) (*CreateRequirementV1Response, error)
+	MultiCreateRequirementV1(ctx context.Context, in *MultiCreateRequirementV1Request, opts ...grpc.CallOption) (*MultiCreateRequirementV1Response, error)
+	UpdateRequirementV1(ctx context.Context, in *UpdateRequirementV1Request, opts ...grpc.CallOption) (*UpdateRequirementV1Response, error)
 	RemoveRequirementV1(ctx context.Context, in *RemoveRequirementV1Request, opts ...grpc.CallOption) (*RemoveRequirementV1Response, error)
 }
 
@@ -59,6 +61,24 @@ func (c *ocpRequirementApiClient) CreateRequirementV1(ctx context.Context, in *C
 	return out, nil
 }
 
+func (c *ocpRequirementApiClient) MultiCreateRequirementV1(ctx context.Context, in *MultiCreateRequirementV1Request, opts ...grpc.CallOption) (*MultiCreateRequirementV1Response, error) {
+	out := new(MultiCreateRequirementV1Response)
+	err := c.cc.Invoke(ctx, "/ocp.requirement.api.OcpRequirementApi/MultiCreateRequirementV1", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *ocpRequirementApiClient) UpdateRequirementV1(ctx context.Context, in *UpdateRequirementV1Request, opts ...grpc.CallOption) (*UpdateRequirementV1Response, error) {
+	out := new(UpdateRequirementV1Response)
+	err := c.cc.Invoke(ctx, "/ocp.requirement.api.OcpRequirementApi/UpdateRequirementV1", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *ocpRequirementApiClient) RemoveRequirementV1(ctx context.Context, in *RemoveRequirementV1Request, opts ...grpc.CallOption) (*RemoveRequirementV1Response, error) {
 	out := new(RemoveRequirementV1Response)
 	err := c.cc.Invoke(ctx, "/ocp.requirement.api.OcpRequirementApi/RemoveRequirementV1", in, out, opts...)
@@ -75,6 +95,8 @@ type OcpRequirementApiServer interface {
 	ListRequirementsV1(context.Context, *ListRequirementsV1Request) (*ListRequirementsV1Response, error)
 	DescribeRequirementV1(context.Context, *DescribeRequirementV1Request) (*DescribeRequirementV1Response, error)
 	CreateRequirementV1(context.Context, *CreateRequirementV1Request) (*CreateRequirementV1Response, error)
+	MultiCreateRequirementV1(context.Context, *MultiCreateRequirementV1Request) (*MultiCreateRequirementV1Response, error)
+	UpdateRequirementV1(context.Context, *UpdateRequirementV1Request) (*UpdateRequirementV1Response, error)
 	RemoveRequirementV1(context.Context, *RemoveRequirementV1Request) (*RemoveRequirementV1Response, error)
 	mustEmbedUnimplementedOcpRequirementApiServer()
 }
@@ -91,6 +113,12 @@ func (UnimplementedOcpRequirementApiServer) DescribeRequirementV1(context.Contex
 }
 func (UnimplementedOcpRequirementApiServer) CreateRequirementV1(context.Context, *CreateRequirementV1Request) (*CreateRequirementV1Response, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateRequirementV1 not implemented")
+}
+func (UnimplementedOcpRequirementApiServer) MultiCreateRequirementV1(context.Context, *MultiCreateRequirementV1Request) (*MultiCreateRequirementV1Response, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method MultiCreateRequirementV1 not implemented")
+}
+func (UnimplementedOcpRequirementApiServer) UpdateRequirementV1(context.Context, *UpdateRequirementV1Request) (*UpdateRequirementV1Response, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateRequirementV1 not implemented")
 }
 func (UnimplementedOcpRequirementApiServer) RemoveRequirementV1(context.Context, *RemoveRequirementV1Request) (*RemoveRequirementV1Response, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RemoveRequirementV1 not implemented")
@@ -162,6 +190,42 @@ func _OcpRequirementApi_CreateRequirementV1_Handler(srv interface{}, ctx context
 	return interceptor(ctx, in, info, handler)
 }
 
+func _OcpRequirementApi_MultiCreateRequirementV1_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MultiCreateRequirementV1Request)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(OcpRequirementApiServer).MultiCreateRequirementV1(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ocp.requirement.api.OcpRequirementApi/MultiCreateRequirementV1",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(OcpRequirementApiServer).MultiCreateRequirementV1(ctx, req.(*MultiCreateRequirementV1Request))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _OcpRequirementApi_UpdateRequirementV1_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateRequirementV1Request)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(OcpRequirementApiServer).UpdateRequirementV1(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ocp.requirement.api.OcpRequirementApi/UpdateRequirementV1",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(OcpRequirementApiServer).UpdateRequirementV1(ctx, req.(*UpdateRequirementV1Request))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _OcpRequirementApi_RemoveRequirementV1_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(RemoveRequirementV1Request)
 	if err := dec(in); err != nil {
@@ -198,6 +262,14 @@ var OcpRequirementApi_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "CreateRequirementV1",
 			Handler:    _OcpRequirementApi_CreateRequirementV1_Handler,
+		},
+		{
+			MethodName: "MultiCreateRequirementV1",
+			Handler:    _OcpRequirementApi_MultiCreateRequirementV1_Handler,
+		},
+		{
+			MethodName: "UpdateRequirementV1",
+			Handler:    _OcpRequirementApi_UpdateRequirementV1_Handler,
 		},
 		{
 			MethodName: "RemoveRequirementV1",
