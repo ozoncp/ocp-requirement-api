@@ -85,7 +85,7 @@ generate_mocks: .install-go-deps .generate_mocks
 	mockgen  -destination ./internal/mocks/flusher.go -package mocks github.com/ozoncp/ocp-requirement-api/internal/flusher Flusher
 
 .PHONY: tests
-tests: .tests
+tests: .generate_mocks .tests
 
 .PHONY: .tests
 .tests:
