@@ -33,6 +33,5 @@ FROM alpine:latest
 RUN apk --no-cache add ca-certificates
 WORKDIR /root/
 COPY --from=builder /home/developer/go/src/github.com/ozoncp/ocp-requirement-api/bin/ocp-requirement-api .
+COPY --from=builder /home/developer/go/src/github.com/ozoncp/ocp-requirement-api/configs/docker-config.yaml .
 RUN chown root:root ocp-requirement-api
-EXPOSE 82
-CMD ["./ocp-requirement-api"]
