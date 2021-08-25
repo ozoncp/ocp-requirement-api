@@ -149,15 +149,18 @@ func (r *requirementApiV1) UpdateRequirementV1(
 		UserId: req.Requirements.UserId,
 		Text:   req.Requirements.Text,
 	}
-
-	if err := r.repo.UpdateEntity(requirement); err != nil {
-		return nil, status.Error(codes.InvalidArgument, err.Error())
+	updated, err := r.repo.UpdateEntity(requirement)
+	if err != nil {
+		return nil, status.Error(codes.Internal, err.Error())
+	}
+	if updated == false {
+		return nil, status.Error(codes.NotFound, "Not found")
 	}
 
-	resp := &requirementApiV1Description.UpdateRequirementV1Response{Updated: true}
+	resp := &requirementApiV1Description.UpdateRequirementV1Response{Updated: updated}
 
 	metrics.UpdateCounterInc()
-	err := r.producer.Send(
+	err = r.producer.Send(
 		kafka.CreateMessage(
 			kafka.Update.String(),
 			kafka.EventContent{

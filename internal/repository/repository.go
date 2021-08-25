@@ -9,7 +9,7 @@ import (
 type Repo interface {
 	AddEntities(entities []models.Requirement) error
 	AddEntity(entity models.Requirement) (uint64, error)
-	UpdateEntity(entity models.Requirement) error
+	UpdateEntity(entity models.Requirement) (bool, error)
 	ListEntities(limit, offset uint64) ([]models.Requirement, error)
 	DescribeEntity(entityId uint64) (*models.Requirement, error)
 	RemoveEntity(entityId uint64) (bool, error)
@@ -44,7 +44,7 @@ func (r RequirementsRepo) AddEntity(entity models.Requirement) (uint64, error) {
 	return resultId, nil
 }
 
-func (r RequirementsRepo) UpdateEntity(entity models.Requirement) error {
+func (r RequirementsRepo) UpdateEntity(entity models.Requirement) (bool, error) {
 	query := `
 		UPDATE
 		    requirement r
@@ -54,11 +54,18 @@ func (r RequirementsRepo) UpdateEntity(entity models.Requirement) error {
 		WHERE
 		    r.id = :id
 	`
-	if _, err := r.db.NamedExec(query, entity); err != nil {
-		return err
+	result, err := r.db.NamedExec(query, entity)
+	if err != nil {
+		return false, err
 	}
-
-	return nil
+	count, err := result.RowsAffected()
+	if err != nil {
+		return false, err
+	}
+	if count != 1 {
+		return false, nil
+	}
+	return true, nil
 }
 
 func (r RequirementsRepo) ListEntities(limit, offset uint64) ([]models.Requirement, error) {
