@@ -226,6 +226,194 @@ func (x *CreateRequirementV1Response) GetRequirementId() uint64 {
 	return 0
 }
 
+type UpdateRequirementV1Request struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Requirements *Requirement `protobuf:"bytes,1,opt,name=requirements,proto3" json:"requirements,omitempty"`
+}
+
+func (x *UpdateRequirementV1Request) Reset() {
+	*x = UpdateRequirementV1Request{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_api_ocp_requirement_api_ocp_requirement_api_proto_msgTypes[4]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *UpdateRequirementV1Request) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateRequirementV1Request) ProtoMessage() {}
+
+func (x *UpdateRequirementV1Request) ProtoReflect() protoreflect.Message {
+	mi := &file_api_ocp_requirement_api_ocp_requirement_api_proto_msgTypes[4]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateRequirementV1Request.ProtoReflect.Descriptor instead.
+func (*UpdateRequirementV1Request) Descriptor() ([]byte, []int) {
+	return file_api_ocp_requirement_api_ocp_requirement_api_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *UpdateRequirementV1Request) GetRequirements() *Requirement {
+	if x != nil {
+		return x.Requirements
+	}
+	return nil
+}
+
+type UpdateRequirementV1Response struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Updated bool `protobuf:"varint,1,opt,name=updated,proto3" json:"updated,omitempty"`
+}
+
+func (x *UpdateRequirementV1Response) Reset() {
+	*x = UpdateRequirementV1Response{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_api_ocp_requirement_api_ocp_requirement_api_proto_msgTypes[5]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *UpdateRequirementV1Response) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateRequirementV1Response) ProtoMessage() {}
+
+func (x *UpdateRequirementV1Response) ProtoReflect() protoreflect.Message {
+	mi := &file_api_ocp_requirement_api_ocp_requirement_api_proto_msgTypes[5]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateRequirementV1Response.ProtoReflect.Descriptor instead.
+func (*UpdateRequirementV1Response) Descriptor() ([]byte, []int) {
+	return file_api_ocp_requirement_api_ocp_requirement_api_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *UpdateRequirementV1Response) GetUpdated() bool {
+	if x != nil {
+		return x.Updated
+	}
+	return false
+}
+
+type MultiCreateRequirementV1Request struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Requirements []*Requirement `protobuf:"bytes,1,rep,name=requirements,proto3" json:"requirements,omitempty"`
+}
+
+func (x *MultiCreateRequirementV1Request) Reset() {
+	*x = MultiCreateRequirementV1Request{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_api_ocp_requirement_api_ocp_requirement_api_proto_msgTypes[6]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *MultiCreateRequirementV1Request) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*MultiCreateRequirementV1Request) ProtoMessage() {}
+
+func (x *MultiCreateRequirementV1Request) ProtoReflect() protoreflect.Message {
+	mi := &file_api_ocp_requirement_api_ocp_requirement_api_proto_msgTypes[6]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use MultiCreateRequirementV1Request.ProtoReflect.Descriptor instead.
+func (*MultiCreateRequirementV1Request) Descriptor() ([]byte, []int) {
+	return file_api_ocp_requirement_api_ocp_requirement_api_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *MultiCreateRequirementV1Request) GetRequirements() []*Requirement {
+	if x != nil {
+		return x.Requirements
+	}
+	return nil
+}
+
+type MultiCreateRequirementV1Response struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Requirements []*Requirement `protobuf:"bytes,1,rep,name=requirements,proto3" json:"requirements,omitempty"`
+}
+
+func (x *MultiCreateRequirementV1Response) Reset() {
+	*x = MultiCreateRequirementV1Response{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_api_ocp_requirement_api_ocp_requirement_api_proto_msgTypes[7]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *MultiCreateRequirementV1Response) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*MultiCreateRequirementV1Response) ProtoMessage() {}
+
+func (x *MultiCreateRequirementV1Response) ProtoReflect() protoreflect.Message {
+	mi := &file_api_ocp_requirement_api_ocp_requirement_api_proto_msgTypes[7]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use MultiCreateRequirementV1Response.ProtoReflect.Descriptor instead.
+func (*MultiCreateRequirementV1Response) Descriptor() ([]byte, []int) {
+	return file_api_ocp_requirement_api_ocp_requirement_api_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *MultiCreateRequirementV1Response) GetRequirements() []*Requirement {
+	if x != nil {
+		return x.Requirements
+	}
+	return nil
+}
+
 type RemoveRequirementV1Request struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -237,7 +425,7 @@ type RemoveRequirementV1Request struct {
 func (x *RemoveRequirementV1Request) Reset() {
 	*x = RemoveRequirementV1Request{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_ocp_requirement_api_ocp_requirement_api_proto_msgTypes[4]
+		mi := &file_api_ocp_requirement_api_ocp_requirement_api_proto_msgTypes[8]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -250,7 +438,7 @@ func (x *RemoveRequirementV1Request) String() string {
 func (*RemoveRequirementV1Request) ProtoMessage() {}
 
 func (x *RemoveRequirementV1Request) ProtoReflect() protoreflect.Message {
-	mi := &file_api_ocp_requirement_api_ocp_requirement_api_proto_msgTypes[4]
+	mi := &file_api_ocp_requirement_api_ocp_requirement_api_proto_msgTypes[8]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -263,7 +451,7 @@ func (x *RemoveRequirementV1Request) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RemoveRequirementV1Request.ProtoReflect.Descriptor instead.
 func (*RemoveRequirementV1Request) Descriptor() ([]byte, []int) {
-	return file_api_ocp_requirement_api_ocp_requirement_api_proto_rawDescGZIP(), []int{4}
+	return file_api_ocp_requirement_api_ocp_requirement_api_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *RemoveRequirementV1Request) GetRequirementId() uint64 {
@@ -284,7 +472,7 @@ type RemoveRequirementV1Response struct {
 func (x *RemoveRequirementV1Response) Reset() {
 	*x = RemoveRequirementV1Response{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_ocp_requirement_api_ocp_requirement_api_proto_msgTypes[5]
+		mi := &file_api_ocp_requirement_api_ocp_requirement_api_proto_msgTypes[9]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -297,7 +485,7 @@ func (x *RemoveRequirementV1Response) String() string {
 func (*RemoveRequirementV1Response) ProtoMessage() {}
 
 func (x *RemoveRequirementV1Response) ProtoReflect() protoreflect.Message {
-	mi := &file_api_ocp_requirement_api_ocp_requirement_api_proto_msgTypes[5]
+	mi := &file_api_ocp_requirement_api_ocp_requirement_api_proto_msgTypes[9]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -310,7 +498,7 @@ func (x *RemoveRequirementV1Response) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RemoveRequirementV1Response.ProtoReflect.Descriptor instead.
 func (*RemoveRequirementV1Response) Descriptor() ([]byte, []int) {
-	return file_api_ocp_requirement_api_ocp_requirement_api_proto_rawDescGZIP(), []int{5}
+	return file_api_ocp_requirement_api_ocp_requirement_api_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *RemoveRequirementV1Response) GetFound() bool {
@@ -331,7 +519,7 @@ type DescribeRequirementV1Request struct {
 func (x *DescribeRequirementV1Request) Reset() {
 	*x = DescribeRequirementV1Request{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_ocp_requirement_api_ocp_requirement_api_proto_msgTypes[6]
+		mi := &file_api_ocp_requirement_api_ocp_requirement_api_proto_msgTypes[10]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -344,7 +532,7 @@ func (x *DescribeRequirementV1Request) String() string {
 func (*DescribeRequirementV1Request) ProtoMessage() {}
 
 func (x *DescribeRequirementV1Request) ProtoReflect() protoreflect.Message {
-	mi := &file_api_ocp_requirement_api_ocp_requirement_api_proto_msgTypes[6]
+	mi := &file_api_ocp_requirement_api_ocp_requirement_api_proto_msgTypes[10]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -357,7 +545,7 @@ func (x *DescribeRequirementV1Request) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DescribeRequirementV1Request.ProtoReflect.Descriptor instead.
 func (*DescribeRequirementV1Request) Descriptor() ([]byte, []int) {
-	return file_api_ocp_requirement_api_ocp_requirement_api_proto_rawDescGZIP(), []int{6}
+	return file_api_ocp_requirement_api_ocp_requirement_api_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *DescribeRequirementV1Request) GetRequirementId() uint64 {
@@ -378,7 +566,7 @@ type DescribeRequirementV1Response struct {
 func (x *DescribeRequirementV1Response) Reset() {
 	*x = DescribeRequirementV1Response{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_ocp_requirement_api_ocp_requirement_api_proto_msgTypes[7]
+		mi := &file_api_ocp_requirement_api_ocp_requirement_api_proto_msgTypes[11]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -391,7 +579,7 @@ func (x *DescribeRequirementV1Response) String() string {
 func (*DescribeRequirementV1Response) ProtoMessage() {}
 
 func (x *DescribeRequirementV1Response) ProtoReflect() protoreflect.Message {
-	mi := &file_api_ocp_requirement_api_ocp_requirement_api_proto_msgTypes[7]
+	mi := &file_api_ocp_requirement_api_ocp_requirement_api_proto_msgTypes[11]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -404,7 +592,7 @@ func (x *DescribeRequirementV1Response) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DescribeRequirementV1Response.ProtoReflect.Descriptor instead.
 func (*DescribeRequirementV1Response) Descriptor() ([]byte, []int) {
-	return file_api_ocp_requirement_api_ocp_requirement_api_proto_rawDescGZIP(), []int{7}
+	return file_api_ocp_requirement_api_ocp_requirement_api_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *DescribeRequirementV1Response) GetRequirement() *Requirement {
@@ -427,7 +615,7 @@ type Requirement struct {
 func (x *Requirement) Reset() {
 	*x = Requirement{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_ocp_requirement_api_ocp_requirement_api_proto_msgTypes[8]
+		mi := &file_api_ocp_requirement_api_ocp_requirement_api_proto_msgTypes[12]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -440,7 +628,7 @@ func (x *Requirement) String() string {
 func (*Requirement) ProtoMessage() {}
 
 func (x *Requirement) ProtoReflect() protoreflect.Message {
-	mi := &file_api_ocp_requirement_api_ocp_requirement_api_proto_msgTypes[8]
+	mi := &file_api_ocp_requirement_api_ocp_requirement_api_proto_msgTypes[12]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -453,7 +641,7 @@ func (x *Requirement) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Requirement.ProtoReflect.Descriptor instead.
 func (*Requirement) Descriptor() ([]byte, []int) {
-	return file_api_ocp_requirement_api_ocp_requirement_api_proto_rawDescGZIP(), []int{8}
+	return file_api_ocp_requirement_api_ocp_requirement_api_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *Requirement) GetId() uint64 {
@@ -510,7 +698,30 @@ var file_api_ocp_requirement_api_ocp_requirement_api_proto_rawDesc = []byte{
 	0x75, 0x69, 0x72, 0x65, 0x6d, 0x65, 0x6e, 0x74, 0x56, 0x31, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e,
 	0x73, 0x65, 0x12, 0x25, 0x0a, 0x0e, 0x72, 0x65, 0x71, 0x75, 0x69, 0x72, 0x65, 0x6d, 0x65, 0x6e,
 	0x74, 0x5f, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x04, 0x52, 0x0d, 0x72, 0x65, 0x71, 0x75,
-	0x69, 0x72, 0x65, 0x6d, 0x65, 0x6e, 0x74, 0x49, 0x64, 0x22, 0x4c, 0x0a, 0x1a, 0x52, 0x65, 0x6d,
+	0x69, 0x72, 0x65, 0x6d, 0x65, 0x6e, 0x74, 0x49, 0x64, 0x22, 0x62, 0x0a, 0x1a, 0x55, 0x70, 0x64,
+	0x61, 0x74, 0x65, 0x52, 0x65, 0x71, 0x75, 0x69, 0x72, 0x65, 0x6d, 0x65, 0x6e, 0x74, 0x56, 0x31,
+	0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x44, 0x0a, 0x0c, 0x72, 0x65, 0x71, 0x75, 0x69,
+	0x72, 0x65, 0x6d, 0x65, 0x6e, 0x74, 0x73, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x20, 0x2e,
+	0x6f, 0x63, 0x70, 0x2e, 0x72, 0x65, 0x71, 0x75, 0x69, 0x72, 0x65, 0x6d, 0x65, 0x6e, 0x74, 0x2e,
+	0x61, 0x70, 0x69, 0x2e, 0x52, 0x65, 0x71, 0x75, 0x69, 0x72, 0x65, 0x6d, 0x65, 0x6e, 0x74, 0x52,
+	0x0c, 0x72, 0x65, 0x71, 0x75, 0x69, 0x72, 0x65, 0x6d, 0x65, 0x6e, 0x74, 0x73, 0x22, 0x37, 0x0a,
+	0x1b, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x52, 0x65, 0x71, 0x75, 0x69, 0x72, 0x65, 0x6d, 0x65,
+	0x6e, 0x74, 0x56, 0x31, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x18, 0x0a, 0x07,
+	0x75, 0x70, 0x64, 0x61, 0x74, 0x65, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x08, 0x52, 0x07, 0x75,
+	0x70, 0x64, 0x61, 0x74, 0x65, 0x64, 0x22, 0x67, 0x0a, 0x1f, 0x4d, 0x75, 0x6c, 0x74, 0x69, 0x43,
+	0x72, 0x65, 0x61, 0x74, 0x65, 0x52, 0x65, 0x71, 0x75, 0x69, 0x72, 0x65, 0x6d, 0x65, 0x6e, 0x74,
+	0x56, 0x31, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x44, 0x0a, 0x0c, 0x72, 0x65, 0x71,
+	0x75, 0x69, 0x72, 0x65, 0x6d, 0x65, 0x6e, 0x74, 0x73, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32,
+	0x20, 0x2e, 0x6f, 0x63, 0x70, 0x2e, 0x72, 0x65, 0x71, 0x75, 0x69, 0x72, 0x65, 0x6d, 0x65, 0x6e,
+	0x74, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x52, 0x65, 0x71, 0x75, 0x69, 0x72, 0x65, 0x6d, 0x65, 0x6e,
+	0x74, 0x52, 0x0c, 0x72, 0x65, 0x71, 0x75, 0x69, 0x72, 0x65, 0x6d, 0x65, 0x6e, 0x74, 0x73, 0x22,
+	0x68, 0x0a, 0x20, 0x4d, 0x75, 0x6c, 0x74, 0x69, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x52, 0x65,
+	0x71, 0x75, 0x69, 0x72, 0x65, 0x6d, 0x65, 0x6e, 0x74, 0x56, 0x31, 0x52, 0x65, 0x73, 0x70, 0x6f,
+	0x6e, 0x73, 0x65, 0x12, 0x44, 0x0a, 0x0c, 0x72, 0x65, 0x71, 0x75, 0x69, 0x72, 0x65, 0x6d, 0x65,
+	0x6e, 0x74, 0x73, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x20, 0x2e, 0x6f, 0x63, 0x70, 0x2e,
+	0x72, 0x65, 0x71, 0x75, 0x69, 0x72, 0x65, 0x6d, 0x65, 0x6e, 0x74, 0x2e, 0x61, 0x70, 0x69, 0x2e,
+	0x52, 0x65, 0x71, 0x75, 0x69, 0x72, 0x65, 0x6d, 0x65, 0x6e, 0x74, 0x52, 0x0c, 0x72, 0x65, 0x71,
+	0x75, 0x69, 0x72, 0x65, 0x6d, 0x65, 0x6e, 0x74, 0x73, 0x22, 0x4c, 0x0a, 0x1a, 0x52, 0x65, 0x6d,
 	0x6f, 0x76, 0x65, 0x52, 0x65, 0x71, 0x75, 0x69, 0x72, 0x65, 0x6d, 0x65, 0x6e, 0x74, 0x56, 0x31,
 	0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x2e, 0x0a, 0x0e, 0x72, 0x65, 0x71, 0x75, 0x69,
 	0x72, 0x65, 0x6d, 0x65, 0x6e, 0x74, 0x5f, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x04, 0x42,
@@ -534,7 +745,7 @@ var file_api_ocp_requirement_api_ocp_requirement_api_proto_rawDesc = []byte{
 	0x12, 0x0e, 0x0a, 0x02, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x04, 0x52, 0x02, 0x69, 0x64,
 	0x12, 0x17, 0x0a, 0x07, 0x75, 0x73, 0x65, 0x72, 0x5f, 0x69, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28,
 	0x04, 0x52, 0x06, 0x75, 0x73, 0x65, 0x72, 0x49, 0x64, 0x12, 0x12, 0x0a, 0x04, 0x74, 0x65, 0x78,
-	0x74, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x74, 0x65, 0x78, 0x74, 0x32, 0x8f, 0x05,
+	0x74, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x74, 0x65, 0x78, 0x74, 0x32, 0xd4, 0x07,
 	0x0a, 0x11, 0x4f, 0x63, 0x70, 0x52, 0x65, 0x71, 0x75, 0x69, 0x72, 0x65, 0x6d, 0x65, 0x6e, 0x74,
 	0x41, 0x70, 0x69, 0x12, 0x8f, 0x01, 0x0a, 0x12, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x65, 0x71, 0x75,
 	0x69, 0x72, 0x65, 0x6d, 0x65, 0x6e, 0x74, 0x73, 0x56, 0x31, 0x12, 0x2e, 0x2e, 0x6f, 0x63, 0x70,
@@ -565,23 +776,44 @@ var file_api_ocp_requirement_api_ocp_requirement_api_proto_rawDesc = []byte{
 	0x2e, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x52, 0x65, 0x71, 0x75, 0x69, 0x72, 0x65, 0x6d, 0x65,
 	0x6e, 0x74, 0x56, 0x31, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x1b, 0x82, 0xd3,
 	0xe4, 0x93, 0x02, 0x15, 0x22, 0x10, 0x2f, 0x76, 0x31, 0x2f, 0x72, 0x65, 0x71, 0x75, 0x69, 0x72,
-	0x65, 0x6d, 0x65, 0x6e, 0x74, 0x73, 0x3a, 0x01, 0x2a, 0x12, 0xa3, 0x01, 0x0a, 0x13, 0x52, 0x65,
+	0x65, 0x6d, 0x65, 0x6e, 0x74, 0x73, 0x3a, 0x01, 0x2a, 0x12, 0xaa, 0x01, 0x0a, 0x18, 0x4d, 0x75,
+	0x6c, 0x74, 0x69, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x52, 0x65, 0x71, 0x75, 0x69, 0x72, 0x65,
+	0x6d, 0x65, 0x6e, 0x74, 0x56, 0x31, 0x12, 0x34, 0x2e, 0x6f, 0x63, 0x70, 0x2e, 0x72, 0x65, 0x71,
+	0x75, 0x69, 0x72, 0x65, 0x6d, 0x65, 0x6e, 0x74, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x4d, 0x75, 0x6c,
+	0x74, 0x69, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x52, 0x65, 0x71, 0x75, 0x69, 0x72, 0x65, 0x6d,
+	0x65, 0x6e, 0x74, 0x56, 0x31, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x35, 0x2e, 0x6f,
+	0x63, 0x70, 0x2e, 0x72, 0x65, 0x71, 0x75, 0x69, 0x72, 0x65, 0x6d, 0x65, 0x6e, 0x74, 0x2e, 0x61,
+	0x70, 0x69, 0x2e, 0x4d, 0x75, 0x6c, 0x74, 0x69, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x52, 0x65,
+	0x71, 0x75, 0x69, 0x72, 0x65, 0x6d, 0x65, 0x6e, 0x74, 0x56, 0x31, 0x52, 0x65, 0x73, 0x70, 0x6f,
+	0x6e, 0x73, 0x65, 0x22, 0x21, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x1b, 0x22, 0x16, 0x2f, 0x76, 0x31,
+	0x2f, 0x72, 0x65, 0x71, 0x75, 0x69, 0x72, 0x65, 0x6d, 0x65, 0x6e, 0x74, 0x73, 0x2f, 0x6d, 0x75,
+	0x6c, 0x74, 0x69, 0x3a, 0x01, 0x2a, 0x12, 0x95, 0x01, 0x0a, 0x13, 0x55, 0x70, 0x64, 0x61, 0x74,
+	0x65, 0x52, 0x65, 0x71, 0x75, 0x69, 0x72, 0x65, 0x6d, 0x65, 0x6e, 0x74, 0x56, 0x31, 0x12, 0x2f,
+	0x2e, 0x6f, 0x63, 0x70, 0x2e, 0x72, 0x65, 0x71, 0x75, 0x69, 0x72, 0x65, 0x6d, 0x65, 0x6e, 0x74,
+	0x2e, 0x61, 0x70, 0x69, 0x2e, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x52, 0x65, 0x71, 0x75, 0x69,
+	0x72, 0x65, 0x6d, 0x65, 0x6e, 0x74, 0x56, 0x31, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a,
+	0x30, 0x2e, 0x6f, 0x63, 0x70, 0x2e, 0x72, 0x65, 0x71, 0x75, 0x69, 0x72, 0x65, 0x6d, 0x65, 0x6e,
+	0x74, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x52, 0x65, 0x71, 0x75,
+	0x69, 0x72, 0x65, 0x6d, 0x65, 0x6e, 0x74, 0x56, 0x31, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73,
+	0x65, 0x22, 0x1b, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x15, 0x1a, 0x10, 0x2f, 0x76, 0x31, 0x2f, 0x72,
+	0x65, 0x71, 0x75, 0x69, 0x72, 0x65, 0x6d, 0x65, 0x6e, 0x74, 0x73, 0x3a, 0x01, 0x2a, 0x12, 0xa3,
+	0x01, 0x0a, 0x13, 0x52, 0x65, 0x6d, 0x6f, 0x76, 0x65, 0x52, 0x65, 0x71, 0x75, 0x69, 0x72, 0x65,
+	0x6d, 0x65, 0x6e, 0x74, 0x56, 0x31, 0x12, 0x2f, 0x2e, 0x6f, 0x63, 0x70, 0x2e, 0x72, 0x65, 0x71,
+	0x75, 0x69, 0x72, 0x65, 0x6d, 0x65, 0x6e, 0x74, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x52, 0x65, 0x6d,
+	0x6f, 0x76, 0x65, 0x52, 0x65, 0x71, 0x75, 0x69, 0x72, 0x65, 0x6d, 0x65, 0x6e, 0x74, 0x56, 0x31,
+	0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x30, 0x2e, 0x6f, 0x63, 0x70, 0x2e, 0x72, 0x65,
+	0x71, 0x75, 0x69, 0x72, 0x65, 0x6d, 0x65, 0x6e, 0x74, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x52, 0x65,
 	0x6d, 0x6f, 0x76, 0x65, 0x52, 0x65, 0x71, 0x75, 0x69, 0x72, 0x65, 0x6d, 0x65, 0x6e, 0x74, 0x56,
-	0x31, 0x12, 0x2f, 0x2e, 0x6f, 0x63, 0x70, 0x2e, 0x72, 0x65, 0x71, 0x75, 0x69, 0x72, 0x65, 0x6d,
-	0x65, 0x6e, 0x74, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x52, 0x65, 0x6d, 0x6f, 0x76, 0x65, 0x52, 0x65,
-	0x71, 0x75, 0x69, 0x72, 0x65, 0x6d, 0x65, 0x6e, 0x74, 0x56, 0x31, 0x52, 0x65, 0x71, 0x75, 0x65,
-	0x73, 0x74, 0x1a, 0x30, 0x2e, 0x6f, 0x63, 0x70, 0x2e, 0x72, 0x65, 0x71, 0x75, 0x69, 0x72, 0x65,
-	0x6d, 0x65, 0x6e, 0x74, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x52, 0x65, 0x6d, 0x6f, 0x76, 0x65, 0x52,
-	0x65, 0x71, 0x75, 0x69, 0x72, 0x65, 0x6d, 0x65, 0x6e, 0x74, 0x56, 0x31, 0x52, 0x65, 0x73, 0x70,
-	0x6f, 0x6e, 0x73, 0x65, 0x22, 0x29, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x23, 0x2a, 0x21, 0x2f, 0x76,
-	0x31, 0x2f, 0x72, 0x65, 0x71, 0x75, 0x69, 0x72, 0x65, 0x6d, 0x65, 0x6e, 0x74, 0x73, 0x2f, 0x7b,
-	0x72, 0x65, 0x71, 0x75, 0x69, 0x72, 0x65, 0x6d, 0x65, 0x6e, 0x74, 0x5f, 0x69, 0x64, 0x7d, 0x42,
-	0x53, 0x5a, 0x51, 0x67, 0x69, 0x74, 0x68, 0x75, 0x62, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x6f, 0x7a,
-	0x6f, 0x6e, 0x63, 0x70, 0x2f, 0x6f, 0x63, 0x70, 0x2d, 0x72, 0x65, 0x71, 0x75, 0x69, 0x72, 0x65,
-	0x6d, 0x65, 0x6e, 0x74, 0x2d, 0x61, 0x70, 0x69, 0x2f, 0x70, 0x6b, 0x67, 0x2f, 0x6f, 0x63, 0x70,
-	0x2d, 0x72, 0x65, 0x71, 0x75, 0x69, 0x72, 0x65, 0x6d, 0x65, 0x6e, 0x74, 0x2d, 0x61, 0x70, 0x69,
-	0x3b, 0x6f, 0x63, 0x70, 0x5f, 0x72, 0x65, 0x71, 0x75, 0x69, 0x72, 0x65, 0x6d, 0x65, 0x6e, 0x74,
-	0x5f, 0x61, 0x70, 0x69, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x31, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x29, 0x82, 0xd3, 0xe4, 0x93, 0x02,
+	0x23, 0x2a, 0x21, 0x2f, 0x76, 0x31, 0x2f, 0x72, 0x65, 0x71, 0x75, 0x69, 0x72, 0x65, 0x6d, 0x65,
+	0x6e, 0x74, 0x73, 0x2f, 0x7b, 0x72, 0x65, 0x71, 0x75, 0x69, 0x72, 0x65, 0x6d, 0x65, 0x6e, 0x74,
+	0x5f, 0x69, 0x64, 0x7d, 0x42, 0x53, 0x5a, 0x51, 0x67, 0x69, 0x74, 0x68, 0x75, 0x62, 0x2e, 0x63,
+	0x6f, 0x6d, 0x2f, 0x6f, 0x7a, 0x6f, 0x6e, 0x63, 0x70, 0x2f, 0x6f, 0x63, 0x70, 0x2d, 0x72, 0x65,
+	0x71, 0x75, 0x69, 0x72, 0x65, 0x6d, 0x65, 0x6e, 0x74, 0x2d, 0x61, 0x70, 0x69, 0x2f, 0x70, 0x6b,
+	0x67, 0x2f, 0x6f, 0x63, 0x70, 0x2d, 0x72, 0x65, 0x71, 0x75, 0x69, 0x72, 0x65, 0x6d, 0x65, 0x6e,
+	0x74, 0x2d, 0x61, 0x70, 0x69, 0x3b, 0x6f, 0x63, 0x70, 0x5f, 0x72, 0x65, 0x71, 0x75, 0x69, 0x72,
+	0x65, 0x6d, 0x65, 0x6e, 0x74, 0x5f, 0x61, 0x70, 0x69, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f,
+	0x33,
 }
 
 var (
@@ -596,34 +828,45 @@ func file_api_ocp_requirement_api_ocp_requirement_api_proto_rawDescGZIP() []byte
 	return file_api_ocp_requirement_api_ocp_requirement_api_proto_rawDescData
 }
 
-var file_api_ocp_requirement_api_ocp_requirement_api_proto_msgTypes = make([]protoimpl.MessageInfo, 9)
+var file_api_ocp_requirement_api_ocp_requirement_api_proto_msgTypes = make([]protoimpl.MessageInfo, 13)
 var file_api_ocp_requirement_api_ocp_requirement_api_proto_goTypes = []interface{}{
-	(*ListRequirementsV1Request)(nil),     // 0: ocp.requirement.api.ListRequirementsV1Request
-	(*ListRequirementsV1Response)(nil),    // 1: ocp.requirement.api.ListRequirementsV1Response
-	(*CreateRequirementV1Request)(nil),    // 2: ocp.requirement.api.CreateRequirementV1Request
-	(*CreateRequirementV1Response)(nil),   // 3: ocp.requirement.api.CreateRequirementV1Response
-	(*RemoveRequirementV1Request)(nil),    // 4: ocp.requirement.api.RemoveRequirementV1Request
-	(*RemoveRequirementV1Response)(nil),   // 5: ocp.requirement.api.RemoveRequirementV1Response
-	(*DescribeRequirementV1Request)(nil),  // 6: ocp.requirement.api.DescribeRequirementV1Request
-	(*DescribeRequirementV1Response)(nil), // 7: ocp.requirement.api.DescribeRequirementV1Response
-	(*Requirement)(nil),                   // 8: ocp.requirement.api.Requirement
+	(*ListRequirementsV1Request)(nil),        // 0: ocp.requirement.api.ListRequirementsV1Request
+	(*ListRequirementsV1Response)(nil),       // 1: ocp.requirement.api.ListRequirementsV1Response
+	(*CreateRequirementV1Request)(nil),       // 2: ocp.requirement.api.CreateRequirementV1Request
+	(*CreateRequirementV1Response)(nil),      // 3: ocp.requirement.api.CreateRequirementV1Response
+	(*UpdateRequirementV1Request)(nil),       // 4: ocp.requirement.api.UpdateRequirementV1Request
+	(*UpdateRequirementV1Response)(nil),      // 5: ocp.requirement.api.UpdateRequirementV1Response
+	(*MultiCreateRequirementV1Request)(nil),  // 6: ocp.requirement.api.MultiCreateRequirementV1Request
+	(*MultiCreateRequirementV1Response)(nil), // 7: ocp.requirement.api.MultiCreateRequirementV1Response
+	(*RemoveRequirementV1Request)(nil),       // 8: ocp.requirement.api.RemoveRequirementV1Request
+	(*RemoveRequirementV1Response)(nil),      // 9: ocp.requirement.api.RemoveRequirementV1Response
+	(*DescribeRequirementV1Request)(nil),     // 10: ocp.requirement.api.DescribeRequirementV1Request
+	(*DescribeRequirementV1Response)(nil),    // 11: ocp.requirement.api.DescribeRequirementV1Response
+	(*Requirement)(nil),                      // 12: ocp.requirement.api.Requirement
 }
 var file_api_ocp_requirement_api_ocp_requirement_api_proto_depIdxs = []int32{
-	8, // 0: ocp.requirement.api.ListRequirementsV1Response.requirements:type_name -> ocp.requirement.api.Requirement
-	8, // 1: ocp.requirement.api.DescribeRequirementV1Response.requirement:type_name -> ocp.requirement.api.Requirement
-	0, // 2: ocp.requirement.api.OcpRequirementApi.ListRequirementsV1:input_type -> ocp.requirement.api.ListRequirementsV1Request
-	6, // 3: ocp.requirement.api.OcpRequirementApi.DescribeRequirementV1:input_type -> ocp.requirement.api.DescribeRequirementV1Request
-	2, // 4: ocp.requirement.api.OcpRequirementApi.CreateRequirementV1:input_type -> ocp.requirement.api.CreateRequirementV1Request
-	4, // 5: ocp.requirement.api.OcpRequirementApi.RemoveRequirementV1:input_type -> ocp.requirement.api.RemoveRequirementV1Request
-	1, // 6: ocp.requirement.api.OcpRequirementApi.ListRequirementsV1:output_type -> ocp.requirement.api.ListRequirementsV1Response
-	7, // 7: ocp.requirement.api.OcpRequirementApi.DescribeRequirementV1:output_type -> ocp.requirement.api.DescribeRequirementV1Response
-	3, // 8: ocp.requirement.api.OcpRequirementApi.CreateRequirementV1:output_type -> ocp.requirement.api.CreateRequirementV1Response
-	5, // 9: ocp.requirement.api.OcpRequirementApi.RemoveRequirementV1:output_type -> ocp.requirement.api.RemoveRequirementV1Response
-	6, // [6:10] is the sub-list for method output_type
-	2, // [2:6] is the sub-list for method input_type
-	2, // [2:2] is the sub-list for extension type_name
-	2, // [2:2] is the sub-list for extension extendee
-	0, // [0:2] is the sub-list for field type_name
+	12, // 0: ocp.requirement.api.ListRequirementsV1Response.requirements:type_name -> ocp.requirement.api.Requirement
+	12, // 1: ocp.requirement.api.UpdateRequirementV1Request.requirements:type_name -> ocp.requirement.api.Requirement
+	12, // 2: ocp.requirement.api.MultiCreateRequirementV1Request.requirements:type_name -> ocp.requirement.api.Requirement
+	12, // 3: ocp.requirement.api.MultiCreateRequirementV1Response.requirements:type_name -> ocp.requirement.api.Requirement
+	12, // 4: ocp.requirement.api.DescribeRequirementV1Response.requirement:type_name -> ocp.requirement.api.Requirement
+	0,  // 5: ocp.requirement.api.OcpRequirementApi.ListRequirementsV1:input_type -> ocp.requirement.api.ListRequirementsV1Request
+	10, // 6: ocp.requirement.api.OcpRequirementApi.DescribeRequirementV1:input_type -> ocp.requirement.api.DescribeRequirementV1Request
+	2,  // 7: ocp.requirement.api.OcpRequirementApi.CreateRequirementV1:input_type -> ocp.requirement.api.CreateRequirementV1Request
+	6,  // 8: ocp.requirement.api.OcpRequirementApi.MultiCreateRequirementV1:input_type -> ocp.requirement.api.MultiCreateRequirementV1Request
+	4,  // 9: ocp.requirement.api.OcpRequirementApi.UpdateRequirementV1:input_type -> ocp.requirement.api.UpdateRequirementV1Request
+	8,  // 10: ocp.requirement.api.OcpRequirementApi.RemoveRequirementV1:input_type -> ocp.requirement.api.RemoveRequirementV1Request
+	1,  // 11: ocp.requirement.api.OcpRequirementApi.ListRequirementsV1:output_type -> ocp.requirement.api.ListRequirementsV1Response
+	11, // 12: ocp.requirement.api.OcpRequirementApi.DescribeRequirementV1:output_type -> ocp.requirement.api.DescribeRequirementV1Response
+	3,  // 13: ocp.requirement.api.OcpRequirementApi.CreateRequirementV1:output_type -> ocp.requirement.api.CreateRequirementV1Response
+	7,  // 14: ocp.requirement.api.OcpRequirementApi.MultiCreateRequirementV1:output_type -> ocp.requirement.api.MultiCreateRequirementV1Response
+	5,  // 15: ocp.requirement.api.OcpRequirementApi.UpdateRequirementV1:output_type -> ocp.requirement.api.UpdateRequirementV1Response
+	9,  // 16: ocp.requirement.api.OcpRequirementApi.RemoveRequirementV1:output_type -> ocp.requirement.api.RemoveRequirementV1Response
+	11, // [11:17] is the sub-list for method output_type
+	5,  // [5:11] is the sub-list for method input_type
+	5,  // [5:5] is the sub-list for extension type_name
+	5,  // [5:5] is the sub-list for extension extendee
+	0,  // [0:5] is the sub-list for field type_name
 }
 
 func init() { file_api_ocp_requirement_api_ocp_requirement_api_proto_init() }
@@ -681,7 +924,7 @@ func file_api_ocp_requirement_api_ocp_requirement_api_proto_init() {
 			}
 		}
 		file_api_ocp_requirement_api_ocp_requirement_api_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*RemoveRequirementV1Request); i {
+			switch v := v.(*UpdateRequirementV1Request); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -693,7 +936,7 @@ func file_api_ocp_requirement_api_ocp_requirement_api_proto_init() {
 			}
 		}
 		file_api_ocp_requirement_api_ocp_requirement_api_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*RemoveRequirementV1Response); i {
+			switch v := v.(*UpdateRequirementV1Response); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -705,7 +948,7 @@ func file_api_ocp_requirement_api_ocp_requirement_api_proto_init() {
 			}
 		}
 		file_api_ocp_requirement_api_ocp_requirement_api_proto_msgTypes[6].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*DescribeRequirementV1Request); i {
+			switch v := v.(*MultiCreateRequirementV1Request); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -717,7 +960,7 @@ func file_api_ocp_requirement_api_ocp_requirement_api_proto_init() {
 			}
 		}
 		file_api_ocp_requirement_api_ocp_requirement_api_proto_msgTypes[7].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*DescribeRequirementV1Response); i {
+			switch v := v.(*MultiCreateRequirementV1Response); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -729,6 +972,54 @@ func file_api_ocp_requirement_api_ocp_requirement_api_proto_init() {
 			}
 		}
 		file_api_ocp_requirement_api_ocp_requirement_api_proto_msgTypes[8].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*RemoveRequirementV1Request); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_api_ocp_requirement_api_ocp_requirement_api_proto_msgTypes[9].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*RemoveRequirementV1Response); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_api_ocp_requirement_api_ocp_requirement_api_proto_msgTypes[10].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*DescribeRequirementV1Request); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_api_ocp_requirement_api_ocp_requirement_api_proto_msgTypes[11].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*DescribeRequirementV1Response); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_api_ocp_requirement_api_ocp_requirement_api_proto_msgTypes[12].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*Requirement); i {
 			case 0:
 				return &v.state
@@ -747,7 +1038,7 @@ func file_api_ocp_requirement_api_ocp_requirement_api_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_api_ocp_requirement_api_ocp_requirement_api_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   9,
+			NumMessages:   13,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

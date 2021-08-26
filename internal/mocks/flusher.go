@@ -5,6 +5,7 @@
 package mocks
 
 import (
+	context "context"
 	reflect "reflect"
 
 	gomock "github.com/golang/mock/gomock"
@@ -46,4 +47,18 @@ func (m *MockFlusher) Flush(arg0 []models.Requirement) []models.Requirement {
 func (mr *MockFlusherMockRecorder) Flush(arg0 interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Flush", reflect.TypeOf((*MockFlusher)(nil).Flush), arg0)
+}
+
+// FlushWithContext mocks base method.
+func (m *MockFlusher) FlushWithContext(arg0 []models.Requirement, arg1 context.Context) []models.Requirement {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "FlushWithContext", arg0, arg1)
+	ret0, _ := ret[0].([]models.Requirement)
+	return ret0
+}
+
+// FlushWithContext indicates an expected call of FlushWithContext.
+func (mr *MockFlusherMockRecorder) FlushWithContext(arg0, arg1 interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "FlushWithContext", reflect.TypeOf((*MockFlusher)(nil).FlushWithContext), arg0, arg1)
 }

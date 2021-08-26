@@ -2,20 +2,10 @@ version: '3.7'
 
 services:
 
-  postgres:
-    image: postgres:latest
-    ports:
-    - "5444:5432"
-    environment:
-      POSTGRES_DB: requirement_db
-      POSTGRES_PASSWORD: password
-      POSTGRES_USER: user
-    volumes:
-      - pgdata:/var/lib/postgresql/data
-
   app:
     build: .
     ports:
+      - "8888:8888"
       - "9999:9999"
       - "82:82"
     restart: always

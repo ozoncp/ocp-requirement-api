@@ -1,8 +1,21 @@
+service-name: "ocp-requirement-api"
 grpc:
   address: ":82"
 
 rest:
   address: ":9999"
 
+jaeger:
+  address: "jaeger:6831"
+
 db:
   dsn: "postgres://user:password@postgres:5432/requirement_db?sslmode=disable"
+
+prometheus:
+  endpoint: "/metrics"
+  address: ":8888"
+
+kafka:
+  addresses:
+    - "kafka:9092"
+  topic: "events"

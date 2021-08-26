@@ -107,3 +107,17 @@ func (mr *MockRepoMockRecorder) RemoveEntity(arg0 interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "RemoveEntity", reflect.TypeOf((*MockRepo)(nil).RemoveEntity), arg0)
 }
+
+// UpdateEntity mocks base method.
+func (m *MockRepo) UpdateEntity(arg0 models.Requirement) error {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "UpdateEntity", arg0)
+	ret0, _ := ret[0].(error)
+	return ret0
+}
+
+// UpdateEntity indicates an expected call of UpdateEntity.
+func (mr *MockRepoMockRecorder) UpdateEntity(arg0 interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "UpdateEntity", reflect.TypeOf((*MockRepo)(nil).UpdateEntity), arg0)
+}

@@ -29,6 +29,20 @@ service OcpRequirementApi {
         };
     }
 
+    rpc MultiCreateRequirementV1(MultiCreateRequirementV1Request) returns (MultiCreateRequirementV1Response) {
+        option (google.api.http) = {
+            post: "/v1/requirements/multi"
+            body: "*"
+        };
+    }
+
+    rpc UpdateRequirementV1(UpdateRequirementV1Request) returns (UpdateRequirementV1Response) {
+        option (google.api.http) = {
+            put: "/v1/requirements"
+            body: "*"
+        };
+    }
+
     rpc RemoveRequirementV1(RemoveRequirementV1Request) returns (RemoveRequirementV1Response) {
         option (google.api.http) = {
             delete: "/v1/requirements/{requirement_id}"
@@ -52,6 +66,22 @@ message CreateRequirementV1Request {
 
 message CreateRequirementV1Response {
     uint64 requirement_id = 1;
+}
+
+message UpdateRequirementV1Request {
+    Requirement requirements = 1;
+}
+
+message UpdateRequirementV1Response {
+    bool updated = 1;
+}
+
+message MultiCreateRequirementV1Request {
+    repeated Requirement requirements = 1;
+}
+
+message MultiCreateRequirementV1Response {
+    repeated Requirement requirements = 1;
 }
 
 message RemoveRequirementV1Request {
